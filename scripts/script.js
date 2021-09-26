@@ -1,24 +1,23 @@
 $(function() {
     console.log("document is ready!");
 
-    var userName, nameLength, nameMsg, nameReverse = ""; 
+    var userName, nameLength, nameMsg, nameReverse, vowelName = ""; 
 
     $('#btnName').click(function() {
         userName = $('#userName').val(); 
-        // console.log(userName); 
-        // console.log($('#userName').val().length); 
-        // console.log(getStringLength(userName)); 
 
         nameLength = getStringLength(userName);
         nameMsg = "The Length of your name is: ";
-        $('#nameOutput').append(nameMsg + nameLength + "<br/>"); 
-
-        // console.log(reverseString(userName)); 
+        $('#nameOutput').append(nameMsg + nameLength + "<br/>");  
 
         nameReverse = reverseString(userName);
         nameMsg = "Your Name reversed letters is: ";
         $('#nameOutput').append(nameMsg + nameReverse + "<br/>"); 
 
+             vowelName = getNumVowels(userName);
+        nameMsg = "The Number of Vowels in your name is: ";
+        $('#nameOutput').append(nameMsg + vowelName + "<br/>"); 
+      
         console.log(thirdLetter(userName)); 
 
         stringArrayPosition(userName); 
@@ -35,6 +34,14 @@ $(function() {
        return stringLength; 
     }
 
+  
+    function getNumVowels(str) {
+      var vowelName = 
+str.match(/[aeiou]/gi);
+       return vowelName === null ? 0 : vowelName.length;
+   }
+  
+  
     function reverseString(stringVal){
         var revString = stringVal.split("").reverse().join("");
        return revString; 
